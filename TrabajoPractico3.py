@@ -1,3 +1,5 @@
+#import de librerias
+import random
 #menu
 def menu():
     for opcion in range(11):
@@ -20,6 +22,21 @@ def CalcularElNumeroMayor(numeros):
     return numero_mayor
 def mostrar_numero_maximo(numero_mayor):
     print(f"El numero mayor de tus numeros ingresados es : {numero_mayor}")
+def carga_de_vectores(n,m):
+    a=[]
+    b=[]
+    for i in range(n):
+        a.append(random.randint(1,10))
+    for i in range(m):
+        b.append(random.randint(1,10))
+    return a , b
+def calcular_suma_del_vector(a,b):
+    suma_a=sum(a)
+    suma_b=sum(b)
+    return suma_a , suma_b
+def sumar_vectores(a,b):
+    vectores=[zip(a,b)]
+    return vectores
 #Ejercicios
 def punto1():
     Numeros=IngresoDeNumeros(3)
@@ -30,7 +47,12 @@ def punto2():
     numero_mayor=CalcularElNumeroMayor(Numeros)
     mostrar_numero_maximo(numero_mayor)
 def punto3():
-
+    n , m = IngresoDeNumeros(2)
+    a,b = carga_de_vectores(n,m)
+    suma_a , suma_b=calcular_suma_del_vector(a,b)
+    if suma_a == suma_b: 
+        vectores= sumar_vectores(a,b)
+        print(f"Los vectores son iguales: {vectores}")
 if __name__ == "__mian__":
     while True:
         menu()
