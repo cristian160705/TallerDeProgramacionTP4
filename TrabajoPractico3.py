@@ -157,6 +157,39 @@ def mostrar_numeros_con_stock_positivo(matriz):
     for fila in matriz:
         if int(fila[3]) > 0:
             print(f"Nombre: {fila[0]}, Proveedor: {fila[1]}, Precio: {fila[2]}, Cantidad: {fila[3]}")
+def min_menu4():
+    print("Ingrese el numero 1 para agregar un nuevo paciente a la lista de espera")
+    print("Ingrese el numero 2 para determinar el paciente a ser atendido y eliminarlo de la lista de espera")
+    print("Ingrese el numero 3 para atender a un pacinte de urgencia y arreglar la lista de espera")
+    print("Ingrese el numero 4 para determinar cuantos pacientes faltan para atender a un paciente en particular")
+    print("Ingrese el numero 5 para mostrar la lista de espera")
+    print("Ingrese el numero 0 para terminar programa")
+def agregar_paciente(lista_de_espera):
+    nombre=input("Ingrese el nombre del paciente para agregarlo a la lista de espera: ")
+    lista_de_espera.append(nombre)
+    print(f"Se agrego a {nombre} a la lista de espera")
+    return lista_de_espera
+def paciente_a_ser_atendido(lista_de_espera):
+    if len(lista_de_espera) > 0:
+        paciente = lista_de_espera.pop(0)
+        print(f"Se atendio al paciente {paciente}")
+    else:
+        print("No hay pacientes en la lista de espera.")
+    return lista_de_espera
+def paciente_a_ser_atendido_urgencia(lista_de_espera):
+    nombre=input("Ingrese el nombre del paciente para atenderlo de urgencia: ")
+    if nombre in lista_de_espera:
+        lista_de_espera.remove(nombre)
+        print(f"Se atendio al paciente {nombre} de urgencia")
+    else:
+        print(f"El paciente {nombre} no se encuentra en la lista de espera.")
+    return lista_de_espera
+def turnos_restantes(lista_de_espera):
+    paciente=input("Ingrese el nombre del paciente para saber cuántos turnos faltan para atenderlo: ")
+    if paciente in lista_de_espera:
+        posicion=lista_de_espera.index(paciente)
+        turnos_faltantes=len(lista_de_espera)-posicion
+        print(f"Faltan {turnos_faltantes} turnos para atender al paciente {paciente}")
 #Ejercicios
 def punto1():
     Numeros=IngresoDeNumeros(3)
@@ -241,7 +274,25 @@ def punto8():
         else:
             print("Opción no válida. Intente nuevamente.")
 def punto9():
-    print("Ejercicio 9 no implementado")
+    lista_de_espera=[]
+    while True: 
+        min_menu4()
+        selseccion=Pedir_numero()
+        if selseccion == "1":
+            lista_de_espera=agregar_paciente(lista_de_espera)
+        elif selseccion == "2":
+            lista_de_espera=paciente_a_ser_atendido(lista_de_espera)
+        elif selseccion == "3":
+            lista_de_espera=paciente_a_ser_atendido_urgencia(lista_de_espera)
+        elif selseccion == "4":
+            turnos_restantes(lista_de_espera)
+        elif selseccion == "5":
+            print(f"La lista de espera es: {lista_de_espera}")
+        elif selseccion == "0":
+            print("El programa ha finalizado")
+            break
+        else:
+            print("Opción no válida, intente de nuevo.")
 def punto10():
     print("Ejercicio 10 no implementado")
 if __name__ == "__main__":
@@ -265,7 +316,7 @@ if __name__ == "__main__":
         elif seleccion == "8": 
             punto8()   
         elif seleccion == "9":
-            print("Ejercicio 9 no implementado")
+            punto9()
         elif seleccion == "10":
             print("Ejercicio 10 no implementado")
         elif seleccion == "0":
