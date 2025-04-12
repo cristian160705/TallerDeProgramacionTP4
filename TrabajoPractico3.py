@@ -131,7 +131,32 @@ def eliminar_duplicados(vectorK):
     vectorK=list(set(vectorK))
     print(f"El vector sin duplicados es: {vectorK}")
     return vectorK
-
+def min_menu3():
+    print("Ingrese el numero 1 si quiere cargar un producto")
+    print("Ingrese el numero 2 si quiere mostrar el producto con menor precio")
+    print("Ingrese el numero 3 si quiere mostrar los numeros con stock positivo")
+    print("Ingrese 0 para salir")
+def cargar_matriz(matriz):
+    nombre= input("Ingrese el nombre del producto: ")
+    proveedor= input("Ingrese el nombre del proveedor: ")
+    precio= float(input("Ingrese el precio del producto: "))
+    cantidad= int(input("Ingrese la cantidad del producto: "))
+    fila=[nombre,proveedor,str(precio),str(cantidad)]
+    matriz.append(fila)
+    return matriz
+def mostrar_producto_menor_precio(matriz):
+    precio_menor=float(matriz[0][2])
+    nombre=matriz[0][0]
+    for fila in range(len(matriz)):
+        if float(matriz[fila][2]) < precio_menor:
+            Preico_menor=float(matriz[fila][2])
+            nombre=matriz[fila][0]
+    print(f"El producto con menor precio es: {nombre} y su precio es: {precio_menor}")
+def mostrar_numeros_con_stock_positivo(matriz):
+    print("Los productos con stock positivo son:")
+    for fila in matriz:
+        if int(fila[3]) > 0:
+            print(f"Nombre: {fila[0]}, Proveedor: {fila[1]}, Precio: {fila[2]}, Cantidad: {fila[3]}")
 #Ejercicios
 def punto1():
     Numeros=IngresoDeNumeros(3)
@@ -200,7 +225,21 @@ def punto7():
     vectorK.sort()
     print(f"El vector ordenado es: {vectorK}")
 def punto8():
-    print("Ejercicio 8 no implementado")
+    matriz=[]
+    while True:
+        min_menu3()
+        seleccion=Pedir_numero()
+        if seleccion == "1":
+            matriz = cargar_matriz(matriz)
+        elif seleccion == "2":
+            mostrar_producto_menor_precio(matriz)
+        elif seleccion == "3":
+            mostrar_numeros_con_stock_positivo(matriz)
+        elif seleccion == "0":
+            print("El programa ha finalizado")
+            break
+        else:
+            print("Opción no válida. Intente nuevamente.")
 def punto9():
     print("Ejercicio 9 no implementado")
 def punto10():
@@ -224,7 +263,7 @@ if __name__ == "__main__":
         elif seleccion == "7":
             punto7()
         elif seleccion == "8": 
-            print("Ejercicio 8 no implementado")     
+            punto8()   
         elif seleccion == "9":
             print("Ejercicio 9 no implementado")
         elif seleccion == "10":
