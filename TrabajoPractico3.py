@@ -110,6 +110,28 @@ def mostrar_matriz(matriz,nombre):
     print(f"La matriz {nombre} es:")
     for fila in matriz:
         print(fila)
+def sumar_diagonal_principal(matriz):
+    suma=0
+    for i in range(len(matriz)):
+        suma+=matriz[i][i]
+    print(f"La suma de la diagonal principal es: {suma}")
+    return suma
+def factoria_mayor_suma(matriz ,suma_diagonal_principal):
+    vectorK=[]
+    for i in range(len(matriz)):
+        for j in range(len(matriz[0])):
+            factorial = 1
+            for k in range(1, (matriz[i][j] + 1)):
+                factorial *= k
+            if factorial >= suma_diagonal_principal:
+                vectorK.append(matriz[i][j])
+    print (f"El vector con los numeros cuyo factorial es mayor a la suma de la diagonal principal es: {vectorK}")
+    return vectorK
+def eliminar_duplicados(vectorK):
+    vectorK=list(set(vectorK))
+    print(f"El vector sin duplicados es: {vectorK}")
+    return vectorK
+
 #Ejercicios
 def punto1():
     Numeros=IngresoDeNumeros(3)
@@ -168,7 +190,15 @@ def punto6():
             matrizC = producto_matrices(matrizA , matrizB)
             mostrar_matriz(matrizC,"C")
 def punto7():
-    print("Ejercicio 7 no implementado")
+    print("ingrese la dimension de su matriz cuadrada")
+    m=Pedir_numero()
+    matriz=cargar_matriz(int(m),int(m))
+    mostrar_matriz(matriz,"cuadrada")
+    suma_diagonal_principal=sumar_diagonal_principal(matriz)
+    vectorK=factoria_mayor_suma(matriz,suma_diagonal_principal)
+    vectorK=eliminar_duplicados(vectorK)
+    vectorK.sort()
+    print(f"El vector ordenado es: {vectorK}")
 def punto8():
     print("Ejercicio 8 no implementado")
 def punto9():
@@ -192,7 +222,7 @@ if __name__ == "__main__":
         elif seleccion == "6":
             punto6() 
         elif seleccion == "7":
-            print("Ejercicio 7 no implementado")
+            punto7()
         elif seleccion == "8": 
             print("Ejercicio 8 no implementado")     
         elif seleccion == "9":
