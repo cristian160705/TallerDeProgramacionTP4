@@ -74,6 +74,42 @@ def es_capicua(numero):
         print(f"El número {numero} es capicúa.")
     else:
         print(f"El número {numero} no es capicúa.")
+def min_menu2():
+    print("Ingrese el numero 1 si quiere sumar matrices")
+    print("Ingrese el numero 2 si quiere multiplicar matrices")
+    print("Ingrese cualquier otro caracter para salir")
+def pedir_dimensiones():
+    m=int(input("Ingrese la cantidad de filas: "))
+    n=int(input("Ingrese la cantidad de columnas: "))
+    return m,n
+def cargar_matriz(m,n):
+    matriz=[]
+    for i in range(m):
+        fila=[]
+        for j in range(n):
+            fila.append(random.randint(1,10))
+        matriz.append(fila)
+    return matriz
+def sumar_matrices(matrizA, matrizB):
+    matrizC =[]
+    for i in range(len(matrizA)):
+        fila=[]
+        for j in range(len(matrizA[0])):
+            fila.append(matrizA[i][j] + matrizB[i][j])
+        matrizC.append(fila)
+    return matrizC
+def producto_matrices(matrizA, matrizB):
+    matrizC= []
+    for i in range ( len(matrizA)):
+        fila=[]
+        for j in range (len(matrizA[0])):
+            fila.append(matrizA[i][j] * matrizB[i][j])
+        matrizC.append(fila)
+    return matrizC
+def mostrar_matriz(matriz,nombre):
+    print(f"La matriz {nombre} es:")
+    for fila in matriz:
+        print(fila)
 #Ejercicios
 def punto1():
     Numeros=IngresoDeNumeros(3)
@@ -114,6 +150,31 @@ def punto5():
         else:
             print("Opción no válida. Intente nuevamente.")
             break
+def punto6():
+    while True : 
+        min_menu2()
+        seleccion=Pedir_numero()
+        if seleccion != "1" and seleccion != "2":
+            break
+        m,n= pedir_dimensiones()
+        matrizA = cargar_matriz(m,n)
+        mostrar_matriz(matrizA,"A")
+        matrizB = cargar_matriz(m,n)
+        mostrar_matriz(matrizB,"B")
+        if seleccion == "1":
+            matrizC = sumar_matrices(matrizA, matrizB)
+            mostrar_matriz(matrizC,"C")
+        elif seleccion == "2":
+            matrizC = producto_matrices(matrizA , matrizB)
+            mostrar_matriz(matrizC,"C")
+def punto7():
+    print("Ejercicio 7 no implementado")
+def punto8():
+    print("Ejercicio 8 no implementado")
+def punto9():
+    print("Ejercicio 9 no implementado")
+def punto10():
+    print("Ejercicio 10 no implementado")
 if __name__ == "__main__":
     while True:
         menu()
@@ -129,7 +190,7 @@ if __name__ == "__main__":
         elif seleccion == "5":
             punto5()
         elif seleccion == "6":
-            print("Ejercicio 6 no implementado")
+            punto6() 
         elif seleccion == "7":
             print("Ejercicio 7 no implementado")
         elif seleccion == "8": 
