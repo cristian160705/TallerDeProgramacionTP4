@@ -82,7 +82,7 @@ def pedir_dimensiones():
     m=int(input("Ingrese la cantidad de filas: "))
     n=int(input("Ingrese la cantidad de columnas: "))
     return m,n
-def cargar_matriz(m,n):
+def cargar_matriz_num(m,n):
     matriz=[]
     for i in range(m):
         fila=[]
@@ -149,9 +149,9 @@ def mostrar_producto_menor_precio(matriz):
     nombre=matriz[0][0]
     for fila in range(len(matriz)):
         if float(matriz[fila][2]) < precio_menor:
-            Preico_menor=float(matriz[fila][2])
+            precio_menor=float(matriz[fila][2])
             nombre=matriz[fila][0]
-    print(f"El producto con menor precio es: {nombre} y su precio es: {precio_menor}")
+    print(f"El producto con menor precio es: {nombre} y su precio es: {precio_menor}$")
 def mostrar_numeros_con_stock_positivo(matriz):
     print("Los productos con stock positivo son:")
     for fila in matriz:
@@ -188,7 +188,7 @@ def turnos_restantes(lista_de_espera):
     paciente=input("Ingrese el nombre del paciente para saber cuántos turnos faltan para atenderlo: ")
     if paciente in lista_de_espera:
         posicion=lista_de_espera.index(paciente)
-        turnos_faltantes=len(lista_de_espera)-posicion
+        turnos_faltantes=posicion
         print(f"Faltan {turnos_faltantes} turnos para atender al paciente {paciente}")
 def min_menu5():
     print("Ingrese el numero 1 para girar los rodillos")
@@ -269,9 +269,9 @@ def punto6():
         if seleccion != "1" and seleccion != "2":
             break
         m,n= pedir_dimensiones()
-        matrizA = cargar_matriz(m,n)
+        matrizA = cargar_matriz_num(m,n)
         mostrar_matriz(matrizA,"A")
-        matrizB = cargar_matriz(m,n)
+        matrizB = cargar_matriz_num(m,n)
         mostrar_matriz(matrizB,"B")
         if seleccion == "1":
             matrizC = sumar_matrices(matrizA, matrizB)
@@ -282,7 +282,7 @@ def punto6():
 def punto7():
     print("ingrese la dimension de su matriz cuadrada")
     m=Pedir_numero()
-    matriz=cargar_matriz(int(m),int(m))
+    matriz=cargar_matriz_num(int(m),int(m))
     mostrar_matriz(matriz,"cuadrada")
     suma_diagonal_principal=sumar_diagonal_principal(matriz)
     vectorK=factoria_mayor_suma(matriz,suma_diagonal_principal)
