@@ -37,6 +37,25 @@ def calcular_suma_del_vector(a,b):
 def sumar_vectores(a,b):
     vectores=[a+b]
     return vectores
+def pedir_horaciones():
+    palabras=input("Ingrese una oracion: ").lower().split()
+    return palabras
+def contar_vocales(palabras):
+    cantidad_vocales=0
+    vocales="aeiou"
+    for palabra in palabras:
+        for letra in palabra:
+            if letra in vocales:
+                cantidad_vocales+=1
+    return cantidad_vocales
+def contar_consonantes(palabras):
+    cantidad_consonantes=0
+    consonantes="bcdfghjklmnpqrstvwxyz"
+    for palabra in palabras:
+        for letra in palabra:
+            if letra in consonantes:
+                cantidad_consonantes+=1
+    return cantidad_consonantes
 #Ejercicios
 def punto1():
     Numeros=IngresoDeNumeros(3)
@@ -55,6 +74,11 @@ def punto3():
         print(f"Los vectores son iguales aqui tenes la conbinacion de ambos: {vectores}")
     else : 
         print(f"La suma de los vectores: {a} y {b} , no son iguales. ")
+def punto4():
+    palabras=pedir_horaciones()
+    cantidad_vocales=contar_vocales(palabras)
+    cantidad_consonantes=contar_consonantes(palabras)
+    print(f"La cantidad de vocales es: {cantidad_vocales} y las consonantes son: {cantidad_consonantes}")
 if __name__ == "__main__":
     while True:
         menu()
@@ -66,7 +90,7 @@ if __name__ == "__main__":
         elif seleccion == "3":
             punto3()
         elif seleccion == "4":
-            print("Ejercicio 4 no implementado")
+            punto4()
         elif seleccion == "5":
             print("Ejercicio 4 no implementado")
         elif seleccion == "6":
