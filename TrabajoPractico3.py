@@ -190,6 +190,38 @@ def turnos_restantes(lista_de_espera):
         posicion=lista_de_espera.index(paciente)
         turnos_faltantes=len(lista_de_espera)-posicion
         print(f"Faltan {turnos_faltantes} turnos para atender al paciente {paciente}")
+def min_menu5():
+    print("Ingrese el numero 1 para girar los rodillos")
+    print("Ingrese el numero 2 para ver los premios acomulados")
+    print("Ingrese el numero 0 para terminar el programa")
+def mostrar_rodillos(rodillos):
+    for i in range(len(rodillos)):
+        print(f"Rodillo {i+1}: {rodillos[i]}")
+def sacar_rotaciones():
+    rotaciones=[]
+    for i in range(3):
+        numero=random.randint(1,9)
+        rotaciones.append(numero)
+    return rotaciones
+def rotar_rodillo(rodillos,rotaciones):
+    for posicion in range(3):
+        rodillos[posicion] = rodillos[posicion][-rotaciones[posicion]:] + rodillos[posicion][:-rotaciones[posicion]]
+    mostrar_rodillos(rodillos)
+    return rodillos
+def premiacion(rodillos,fichas): 
+    for i in range(9):
+        if rodillos[0][i]=="X" and rodillos[1][i]=="X" and rodillos[2][i]=="X":
+            print("Gano 10 fichas")
+            fichas+= 10
+        elif rodillos[0][i]=="O" and rodillos[1][i]=="O" and rodillos[2][i]=="O":
+            print("Gano 100 fichas")
+            fichas+= 100
+        elif rodillos[0][i]=="7" and rodillos[1][i]=="7" and rodillos[2][i]=="7":
+            print("Gano 1000 fichas")
+            fichas+= 1000
+        else: 
+            print( "No gano nada")
+    return fichas
 #Ejercicios
 def punto1():
     Numeros=IngresoDeNumeros(3)
@@ -294,7 +326,27 @@ def punto9():
         else:
             print("Opción no válida, intente de nuevo.")
 def punto10():
-    print("Ejercicio 10 no implementado")
+    rodillos=[
+        ["X","O","7","X","O","7","X","O","7"],
+        ["X","O","7","X","O","7","X","O","7"],
+        ["X","O","7","X","O","7","X","O","7"]]
+    fichas=0
+    print("Rodillos iniciales")
+    mostrar_rodillos(rodillos)
+    while True:
+        min_menu5()
+        seleccion=Pedir_numero()
+        if seleccion == "1":
+            rotaciones=sacar_rotaciones()
+            rodillos=rotar_rodillo(rodillos,rotaciones)
+            fichas= premiacion(rodillos,fichas)
+        elif seleccion == "2":
+            print(f"Usted lleva un total de {fichas} acomuladas")
+        elif seleccion == "0":
+            print("El programa ha terminado")
+            break
+        else: 
+            print("Opcion incorrecta")
 if __name__ == "__main__":
     while True:
         menu()
@@ -318,7 +370,7 @@ if __name__ == "__main__":
         elif seleccion == "9":
             punto9()
         elif seleccion == "10":
-            print("Ejercicio 10 no implementado")
+            punto10()
         elif seleccion == "0":
             print("el programa ha finalizado")
             break
