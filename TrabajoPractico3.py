@@ -56,6 +56,24 @@ def contar_consonantes(palabras):
             if letra in consonantes:
                 cantidad_consonantes+=1
     return cantidad_consonantes
+def min_menu():
+    print("Ingrese el numero 1 si quiere sacar una potencia de un numero")
+    print("Ingrese el numero 2 si quiere contar la cantidad de digitos de un numero")
+    print("Ingrese el numero 3 si quiere saber si un numero es capicua")
+    print("Ingrese cualquier otro caracter para salir")
+def Pedir_potencia():
+    k=int(input("Ingrese el valor de la potencia: "))
+    return k
+def calcular_potencia(numero,k):
+    numero_potenciado=numero ** k
+    print(f"El resultado de {numero} elevado a la potencia {k} es: {numero_potenciado}")
+def contar_digitos(numero):
+    print(f"El numero {numero} tiene {len(numero)} digitos")
+def es_capicua(numero):
+    if numero == numero[::-1]:
+        print(f"El número {numero} es capicúa.")
+    else:
+        print(f"El número {numero} no es capicúa.")
 #Ejercicios
 def punto1():
     Numeros=IngresoDeNumeros(3)
@@ -79,6 +97,23 @@ def punto4():
     cantidad_vocales=contar_vocales(palabras)
     cantidad_consonantes=contar_consonantes(palabras)
     print(f"La cantidad de vocales es: {cantidad_vocales} y las consonantes son: {cantidad_consonantes}")
+def punto5():
+    while True:
+        min_menu()
+        seleccion=Pedir_numero()
+        if seleccion == "1":
+            numero=Pedir_numero()
+            k=Pedir_potencia()
+            calcular_potencia(int(numero),k)
+        elif seleccion == "2":
+            numero=Pedir_numero()
+            contar_digitos(numero)
+        elif seleccion == "3":
+            numero=Pedir_numero()
+            es_capicua(numero)
+        else:
+            print("Opción no válida. Intente nuevamente.")
+            break
 if __name__ == "__main__":
     while True:
         menu()
@@ -92,17 +127,17 @@ if __name__ == "__main__":
         elif seleccion == "4":
             punto4()
         elif seleccion == "5":
-            print("Ejercicio 4 no implementado")
+            punto5()
         elif seleccion == "6":
-            print("Ejercicio 4 no implementado")
+            print("Ejercicio 6 no implementado")
         elif seleccion == "7":
-            print("Ejercicio 4 no implementado")
-        elif seleccion == "8":
-            print("Ejercicio 4 no implementado")
+            print("Ejercicio 7 no implementado")
+        elif seleccion == "8": 
+            print("Ejercicio 8 no implementado")     
         elif seleccion == "9":
-            print("Ejercicio 4 no implementado")
+            print("Ejercicio 9 no implementado")
         elif seleccion == "10":
-            print("Ejercicio 4 no implementado")
+            print("Ejercicio 10 no implementado")
         elif seleccion == "0":
             print("el programa ha finalizado")
             break
