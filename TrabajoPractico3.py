@@ -202,25 +202,25 @@ def sacar_rotaciones():
     for i in range(3):
         numero=random.randint(1,9)
         rotaciones.append(numero)
+    print(f"Las rotaciones son: {rotaciones}")
     return rotaciones
 def rotar_rodillo(rodillos,rotaciones):
-    for posicion in range(3):
-        rodillos[posicion] = rodillos[posicion][-rotaciones[posicion]:] + rodillos[posicion][:-rotaciones[posicion]]
+    for i in range(len(rodillos)):
+        rodillos[i] = rodillos[i][-rotaciones[i]:] + rodillos[i][:-rotaciones[i]]
     mostrar_rodillos(rodillos)
     return rodillos
 def premiacion(rodillos,fichas): 
-    for i in range(9):
-        if rodillos[0][i]=="X" and rodillos[1][i]=="X" and rodillos[2][i]=="X":
-            print("Gano 10 fichas")
-            fichas+= 10
-        elif rodillos[0][i]=="O" and rodillos[1][i]=="O" and rodillos[2][i]=="O":
-            print("Gano 100 fichas")
-            fichas+= 100
-        elif rodillos[0][i]=="7" and rodillos[1][i]=="7" and rodillos[2][i]=="7":
-            print("Gano 1000 fichas")
-            fichas+= 1000
-        else: 
-            print( "No gano nada")
+    if rodillos[0][0]=="X" and rodillos[1][0]=="X" and rodillos[2][0]=="X":
+        print("Gano 10 fichas")
+        fichas+= 10
+    elif rodillos[0][0]=="O" and rodillos[1][0]=="O" and rodillos[2][0]=="O":
+        print("Gano 100 fichas")
+        fichas+= 100
+    elif rodillos[0][0]=="7" and rodillos[1][0]=="7" and rodillos[2][0]=="7":
+        print("Gano 1000 fichas")
+        fichas+= 1000
+    else: 
+        print( "No gano nada")
     return fichas
 #Ejercicios
 def punto1():
