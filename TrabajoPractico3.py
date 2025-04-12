@@ -13,7 +13,7 @@ def Pedir_numero() :
     return numero
 def IngresoDeNumeros(cantidad_numeros):
     Numeros=[]
-    for i in cantidad_numeros:
+    for i in range(cantidad_numeros):
         numero=Pedir_numero()
         Numeros.append(int(numero))
     return Numeros
@@ -35,7 +35,7 @@ def calcular_suma_del_vector(a,b):
     suma_b=sum(b)
     return suma_a , suma_b
 def sumar_vectores(a,b):
-    vectores=[zip(a,b)]
+    vectores=[a+b]
     return vectores
 #Ejercicios
 def punto1():
@@ -52,8 +52,10 @@ def punto3():
     suma_a , suma_b=calcular_suma_del_vector(a,b)
     if suma_a == suma_b: 
         vectores= sumar_vectores(a,b)
-        print(f"Los vectores son iguales: {vectores}")
-if __name__ == "__mian__":
+        print(f"Los vectores son iguales aqui tenes la conbinacion de ambos: {vectores}")
+    else : 
+        print(f"La suma de los vectores: {a} y {b} , no son iguales. ")
+if __name__ == "__main__":
     while True:
         menu()
         seleccion=Pedir_numero()
@@ -64,12 +66,19 @@ if __name__ == "__mian__":
         elif seleccion == "3":
             punto3()
         elif seleccion == "4":
+            print("Ejercicio 4 no implementado")
         elif seleccion == "5":
+            print("Ejercicio 4 no implementado")
         elif seleccion == "6":
+            print("Ejercicio 4 no implementado")
         elif seleccion == "7":
+            print("Ejercicio 4 no implementado")
         elif seleccion == "8":
+            print("Ejercicio 4 no implementado")
         elif seleccion == "9":
+            print("Ejercicio 4 no implementado")
         elif seleccion == "10":
+            print("Ejercicio 4 no implementado")
         elif seleccion == "0":
             print("el programa ha finalizado")
             break
